@@ -17,6 +17,7 @@
         $query->bindValue(':change', (int)$change, PDO::PARAM_INT); //$changeの値をisRunningの?部分にバインド
         $query->execute(); //実行
         echo '<p>update done</p>';
+        echo '<p>' + $nowtime + '</p>';
 
         $query2 = $pdo->prepare('INSERT INTO change_log (id, change, changed_date, changed_ip) VALUES (:id, :change, :changed_date, :changed_ip)');
 
