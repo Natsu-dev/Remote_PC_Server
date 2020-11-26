@@ -1,7 +1,9 @@
 <?php
     date_default_timezone_set('Asia/Tokyo'); //タイムゾーンを東京に設定
     $nowtime = date('Y-m-d H:i:s'); //実行される時刻を記録 (string型?)
-    $pdo = new PDO('mysql:host=localhost;dbname=remotepc;charset=utf8', 'default', 'test'); //PDOを宣言
+
+    require('variable.php'); //変数ファイルを読み込み
+    $pdo = new PDO('mysql:host=' . $_SERVER['HTTP_HOST'] . ';dbname=' . $dbName . ';charset=utf8', $userName, $passWord); //PDOを宣言
     $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //例外用
 
     if (isset($_GET['changed'])) { //URLにchangedパラメータがある → スイッチ更新処理
